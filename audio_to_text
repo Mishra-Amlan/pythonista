@@ -1,0 +1,14 @@
+import openai
+import os
+
+openai.api_key = 'Enter your open AI key here'
+audio_file = "enter your audio file path with .mp3 extension"
+
+def audio_to_text(audio_file_name):
+    audio_input= open(audio_file_name, "rb")
+    transcript = openai.Audio.transcribe("whisper-1", audio_input)
+    user_input_in_text_from_audio = transcript['text']
+    return user_input_in_text_from_audio
+
+text_output = audio_to_text(audio_file)
+print(text_output)
